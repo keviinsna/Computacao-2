@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Implementa uma loja virtual para produtos de qualquer tipo,
  * desde que tenham descrição, preço e dimensões.
@@ -7,6 +9,10 @@
  */
 public class Loja {
 
+    private ArrayList<Usuario> usuarios;
+
+    private ArrayList<Produto> produtos;
+
     private static final Loja instanciaUnica = new Loja();
 
     static {
@@ -15,6 +21,8 @@ public class Loja {
 
     private Loja() {
         // escrevo código normalmente para o construtor
+        usuarios = new ArrayList<>();
+        produtos = new ArrayList<>();
     }
 
     public static Loja getInstanciaUnica() {
@@ -28,11 +36,17 @@ public class Loja {
      * @param quantidadeAIncluir a quantidade que será acrescentada à quantidade existente.
      */
     public void incluirProduto(Produto produto, int quantidadeAIncluir) {
-        // ToDo IMPLEMENT ME!!!
+        if(quantidadeAIncluir >= 0){
+            if(!this.produtos.contains(produto))
+                this.produtos.add(produto);
+
+            produto.setQuantidadeProduto(quantidadeAIncluir);
+        }
     }
 
     public void cadastrarUsuario(Usuario usuario) {
-        // ToDo IMPLEMENT ME!!!
+        if(!usuarios.contains(usuario))
+            this.usuarios.add(usuario);
     }
 
     /**
@@ -47,7 +61,10 @@ public class Loja {
      */
     public Recibo efetuarVenda(
             Produto produto, int quantidadeDesejada, Usuario usuario) {
-        return null;  // ToDo IMPLEMENT ME!!!
+        if(!produtos.contains(produto) || !usuarios.contains(usuario) || quantidadeDesejada > produto.getQuantidadeProduto())
+            return null;
+
+        return new Recibo(produto, quantidadeDesejada, usuario);
     }
 
     /**
@@ -58,6 +75,6 @@ public class Loja {
      *         -1 se o produto não é sequer vendido pela loja
      */
     public int informarQuantidadeEmEstoque(Produto produto) {
-        return 0;  // ToDo IMPLEMENT ME!!!
+        return this.produtos.contains(produto)? produto.getQuantidadeProduto() : -1;
     }
 }

@@ -1,7 +1,7 @@
 public class Brinquedo extends Produto {
 
     public Brinquedo(String descricao) {
-        super(descricao);
+        super(descricao, null);
     }
 
     public String getMarca() {

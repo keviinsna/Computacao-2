@@ -1,7 +1,10 @@
 public class Livro extends Produto {
 
+    private String editora;
+
     public Livro(String nome, String editora) {
-        super(nome, editora);
+        super(nome, null);
+        this.editora = editora;
     }
 
     private int numeroDePaginas() {
