@@ -1,17 +1,20 @@
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.util.List;
 import java.util.Random;
 
 public class Pacotinho{
 
-    private Repositorio repo;
-    private Colecionavel[] pacotinho;
+    private final Repositorio repo;
+    private final Colecionavel[] pacotinho;
 
     public Pacotinho(Repositorio repo, int[] posicoesDesejadas) {
         this.repo = repo;
         this.pacotinho = new Figurinha[posicoesDesejadas.length];
 
         for(int i = 0; i < posicoesDesejadas.length; i++){
-            pacotinho[i] = new Figurinha(posicoesDesejadas[i], null);
+//            pacotinho[i] = new Figurinha(posicoesDesejadas[i], null);
+            pacotinho[i] = repo.getItem(posicoesDesejadas[i] - 1);
         }
     }
 
@@ -24,13 +27,13 @@ public class Pacotinho{
      */
     public Pacotinho(Repositorio repo, int quantFigurinhas) {
         this.repo = repo;
-        this.pacotinho = new Colecionavel[quantFigurinhas];
+        this.pacotinho = new Figurinha[quantFigurinhas];
 
         Random random = new Random();
-        int totalFigurinhas = repo.getTotalFigurinhas();
+        int totalFigurinhas = repo.getTotalItens();
 
         for(int i = 0; i < quantFigurinhas; i++){
-            pacotinho[i] = new Figurinha(random.nextInt(totalFigurinhas) + 1, null);
+            pacotinho[i] = repo.getItem(random.nextInt(totalFigurinhas));
         }
     }
 

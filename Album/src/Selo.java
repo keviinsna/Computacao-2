@@ -8,9 +8,9 @@ public class Selo implements Colecionavel{
     private final int posicao;
     private final Image imagem;
 
-    public Selo(int posicao, Image imagem) {
+    public Selo(int posicao, String urlDaImagem) {
         this.posicao = posicao;
-        this.imagem = imagem;
+        this.imagem = obterImagem(urlDaImagem);
     }
 
     public float getValorNominal(){
@@ -21,9 +21,15 @@ public class Selo implements Colecionavel{
         return this.pais;
     }
 
+    private Image obterImagem(String url) {
+        // ToDo baixaria da Internet...
+        return null;
+    }
+
     public Image getImagem(){
         return this.imagem;
     }
+
     public int getPosicao(){
         return this.posicao;
     }

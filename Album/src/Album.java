@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Album {
+public class Album{
 
     public static final int PERCENTUAL_MINIMO_PARA_AUTO_COMPLETAR = 90;
 
@@ -13,24 +13,24 @@ public class Album {
     private final Repositorio repositorio;
     private final int quantItensPorPacotinho;
 
-    private List<Colecionavel> figurinhasColadas;  // direct addressing
-    private int quantFigurinhasColadas;
+    private final List<Colecionavel> itensColados;  // direct addressing
+    private int quantItensColados;
 
     // poderíamos fazer novamente direct addressing para as repetidas,
     // mas vamos usar um HashMap aqui só para treinarmos
-    private Map<Integer, Integer> contRepetidasByPosicao;
+    private final Map<Integer, Integer> contRepetidasByPosicao;
 
     public Album(Repositorio repositorio, int quantItensPorPacotinho) {
         this.repositorio = repositorio;
         this.quantItensPorPacotinho = quantItensPorPacotinho;
 
         int tamanhoFisicoDaLista = getTamanho() + 1;
-        this.figurinhasColadas = new ArrayList<>(tamanhoFisicoDaLista);
+        this.itensColados = new ArrayList<>(tamanhoFisicoDaLista);
         // inicializa as posições com nulls, para poder acessá-las diretamente
         for (int i = 0; i < tamanhoFisicoDaLista; i++) {
-            this.figurinhasColadas.add(null);
+            this.itensColados.add(null);
         }
-        this.quantFigurinhasColadas = 0;
+        this.quantItensColados = 0;
 
         this.contRepetidasByPosicao = new HashMap<>();
     }
@@ -58,21 +58,20 @@ public class Album {
             } else {
                 // item inédito
                 if(posicao != 0){
-                    this.figurinhasColadas.set(posicao, fig);
-                    this.quantFigurinhasColadas++;
+                    this.itensColados.set(posicao, fig);
+                    this.quantItensColados++;
                 }
             }
         }
     }
 
     public Colecionavel getItemColado(int posicao) {
-        return possuiItemColado(posicao)? this.figurinhasColadas.get(posicao) : null;
+        return possuiItemColado(posicao)? this.itensColados.get(posicao) : null;
     }
 
     public boolean possuiItemColado(int posicao) {
-        if(posicao <= 0 || posicao > this.figurinhasColadas.size() - 1) return false;
-
-        return this.figurinhasColadas.get(posicao) != null;
+        if(posicao <= 0 || posicao > this.itensColados.size() - 1) return false;
+        return this.itensColados.get(posicao) != null;
     }
 
     public boolean possuiItemRepetido(int posicao) {
@@ -80,7 +79,7 @@ public class Album {
     }
 
     public int getTamanho() {
-        return this.repositorio.getTotalFigurinhas();
+        return this.repositorio.getTotalItens();
     }
 
     public int getQuantItensColados() {
@@ -93,7 +92,7 @@ public class Album {
 //        return contador;
 
         // melhor jeito: atributo!
-        return this.quantFigurinhasColadas;
+        return this.quantItensColados;
     }
 
     public int getQuantItensFaltantes() {
@@ -102,21 +101,21 @@ public class Album {
 
     public void autoCompletar() {
         int minimoFigurinhasColadasParaAutoCompletar = (int) (this.getTamanho() * Album.PERCENTUAL_MINIMO_PARA_AUTO_COMPLETAR / 100f);
-        if(minimoFigurinhasColadasParaAutoCompletar <= this.quantFigurinhasColadas){
-            int[] posicoesDesejadas = new int[this.quantItensPorPacotinho];
+        if(minimoFigurinhasColadasParaAutoCompletar <= this.quantItensColados){
+            int[] posicoesDesejadas = new int[]{1, 1, 1};
             int index = 0;
-            for(int i = 1; i < this.figurinhasColadas.size(); i++){
-                Colecionavel fig = this.figurinhasColadas.get(i);
+            for(int i = 1; i < this.itensColados.size(); i++){
+                Colecionavel fig = this.itensColados.get(i);
                 if (fig == null){
                     posicoesDesejadas[index++] = i;
                     if(index == 3){
                         index = 0;
                         receberNovoPacotinho(new Pacotinho(this.repositorio, posicoesDesejadas));
-                        posicoesDesejadas[0] = posicoesDesejadas[1] = posicoesDesejadas[2] = 0;
+                        posicoesDesejadas[0] = posicoesDesejadas[1] = posicoesDesejadas[2] = 1;
                     }
                 }
             }
-            if(posicoesDesejadas[0] != 0)
+            if(posicoesDesejadas[0] != 1)
                 receberNovoPacotinho(new Pacotinho(this.repositorio, posicoesDesejadas));
         }
     }
