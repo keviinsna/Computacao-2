@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="794694fc-e65c-48de-a1cb-135da3f9d11e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Album.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LAB6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Album.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AlbumTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Colecionavel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Figurinha.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pacotinho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pacotinho.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repositorio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Selo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Selo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
