@@ -57,10 +57,8 @@ public class Album{
 
             } else {
                 // item inédito
-                if(posicao != 0){
-                    this.itensColados.set(posicao, fig);
-                    this.quantItensColados++;
-                }
+                this.itensColados.set(posicao, fig);
+                this.quantItensColados++;
             }
         }
     }

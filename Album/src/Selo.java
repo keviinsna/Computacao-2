@@ -8,9 +8,10 @@ public class Selo implements Colecionavel{
     private final int posicao;
     private final Image imagem;
 
-    public Selo(int posicao, String urlDaImagem) {
+    public Selo(int posicao, String urlDaImagem, float valorNominal) {
         this.posicao = posicao;
         this.imagem = obterImagem(urlDaImagem);
+        this.valorNominal = valorNominal;
     }
 
     public float getValorNominal(){

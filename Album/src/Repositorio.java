@@ -10,7 +10,7 @@ public class Repositorio{
     public Repositorio(String sufixoUrlImagens, int quantFigurinhas) {
         todosItens = new ArrayList<>(quantFigurinhas);
         for (int i = 1; i <= quantFigurinhas; i++) {
-            Figurinha fig = new Figurinha(i, PREFIXO_URL_IMAGENS + sufixoUrlImagens);
+            Colecionavel fig = new Figurinha(i, PREFIXO_URL_IMAGENS + sufixoUrlImagens);
             todosItens.add(fig);
         }
     }

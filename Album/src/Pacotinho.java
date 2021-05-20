@@ -10,8 +10,7 @@ public class Pacotinho{
         this.pacotinho = new Colecionavel[posicoesDesejadas.length];
 
         for(int i = 0; i < posicoesDesejadas.length; i++){
-//            pacotinho[i] = new Figurinha(posicoesDesejadas[i], null);
-            pacotinho[i] = repo.getItem(posicoesDesejadas[i] - 1);
+            pacotinho[i] = repo.getItem(posicoesDesejadas[i]);
         }
     }
 
@@ -27,10 +26,10 @@ public class Pacotinho{
         this.pacotinho = new Colecionavel[quantFigurinhas];
 
         Random random = new Random();
-        int totalFigurinhas = repo.getTotalItens();
+        int totalItens = repo.getTotalItens();
 
         for(int i = 0; i < quantFigurinhas; i++){
-            pacotinho[i] = repo.getItem(random.nextInt(totalFigurinhas));
+            pacotinho[i] = repo.getItem(random.nextInt(totalItens) + 1);
         }
     }
 
