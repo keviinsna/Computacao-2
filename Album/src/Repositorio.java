@@ -1,4 +1,3 @@
-import java.nio.charset.CodingErrorAction;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +20,10 @@ public class Repositorio{
     }
 
     public Colecionavel getItem(int posicao){
-        return this.todosItens.get(posicao);
+        for(Colecionavel itemColecionvel: this.todosItens){
+            if(itemColecionvel.getPosicao() == posicao)
+                return itemColecionvel;
+        }
+        return null;
     }
 }

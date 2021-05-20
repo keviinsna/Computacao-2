@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a165fbde-25e7-45f9-8fb8-452257a548ea" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+    <list default="true" id="794694fc-e65c-48de-a1cb-135da3f9d11e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Album.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LAB6.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Album.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AlbumTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Colecionavel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Figurinha.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pacotinho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pacotinho.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repositorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repositorio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Selo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Selo.java" afterDir="false" />
@@ -16,16 +24,18 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1so7mOGNeOYsx3WDqaVtec4G15j" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1soL1qZEMzNt1zokGmWFcTLvze6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -37,10 +47,10 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Album2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -64,26 +74,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AlbumTest.testarGetItemColado" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Album" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AlbumTest" />
-      <option name="METHOD_NAME" value="testarGetItemColado" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AlbumTest.testarPacotinho" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Album" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AlbumTest" />
-      <option name="METHOD_NAME" value="testarPacotinho" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="AlbumTest.testarPossuiFigurinhaParaFigurinhasExistentes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Album" />
       <option name="PACKAGE_NAME" value="" />
@@ -99,19 +89,17 @@
         <item itemvalue="JUnit.AlbumTest" />
         <item itemvalue="JUnit.AlbumTest.testarAutoCompletar" />
         <item itemvalue="JUnit.AlbumTest.testarPossuiFigurinhaParaFigurinhasExistentes" />
-        <item itemvalue="JUnit.AlbumTest.testarPacotinho" />
-        <item itemvalue="JUnit.AlbumTest.testarGetItemColado" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a165fbde-25e7-45f9-8fb8-452257a548ea" name="Default Changelist" comment="" />
-      <created>1621527251050</created>
+      <changelist id="794694fc-e65c-48de-a1cb-135da3f9d11e" name="Default Changelist" comment="" />
+      <created>1621533787454</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1621527251050</updated>
+      <updated>1621533787454</updated>
     </task>
     <servers />
   </component>
@@ -125,6 +113,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

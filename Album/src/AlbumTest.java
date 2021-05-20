@@ -24,7 +24,7 @@ public class AlbumTest {
 
     @Test
     public void testarPossuiFigurinhaParaFigurinhasExistentes() {
-        popularAlbum(new int[]{1, 2, 3});
+        popularAlbum(new int[] {1, 2, 3});
 
         for (int i = 1; i <= 3; i++) {
             assertTrue("Figurinhas já inseridas devem ser encontradas",
@@ -34,7 +34,7 @@ public class AlbumTest {
 
     @Test
     public void testarPossuiFigurinhaParaFigurinhasAusentes() {
-        popularAlbum(new int[]{1, 2, 3});
+        popularAlbum(new int[] {1, 2, 3});
 
         assertFalse("Não devemos encontrar no álbum figurinhas nunca inseridas",
                 this.albumFigurinhas.possuiItemColado(4));
@@ -46,10 +46,10 @@ public class AlbumTest {
 
     @Test
     public void testarPossuiRepetidaParaFigurinhaRepetida() {
-        popularAlbum(new int[]{1, 2, 3});
+        popularAlbum(new int[] {1, 2, 3});
         assertFalse(this.albumFigurinhas.possuiItemRepetido(2));  // sanity check
 
-        popularAlbum(new int[]{2, 8, 9});
+        popularAlbum(new int[] {2, 8, 9});
         assertTrue(this.albumFigurinhas.possuiItemRepetido(2));
     }
 
@@ -60,19 +60,19 @@ public class AlbumTest {
 
     @Test
     public void testarGetContFigurinhas() {
-        popularAlbum(new int[]{1, 2, 3});
+        popularAlbum(new int[] {1, 2, 3});
         assertEquals(3, this.albumFigurinhas.getQuantItensColados());
 
         // vou agora abrir outro pacotinho com as mesmas figurinhas
         // e verificar que o álbum terá ainda 3 figurinhas
 
-        popularAlbum(new int[]{1, 2, 3});
+        popularAlbum(new int[] {1, 2, 3});
         assertEquals(3, this.albumFigurinhas.getQuantItensColados());
     }
 
     @Test
     public void testarGetQuantasFaltam() {
-        popularAlbum(new int[]{1, 2, 3});
+        popularAlbum(new int[] {1, 2, 3});
         assertEquals(TAMANHO_DO_ALBUM - 3,
                 this.albumFigurinhas.getQuantItensFaltantes());
     }
@@ -96,6 +96,7 @@ public class AlbumTest {
 
         // sanity check
         assertTrue(albumFigurinhas.getQuantItensFaltantes() > 0);
+
         albumFigurinhas.autoCompletar();
 
         assertEquals("O álbum deve estar completo após uma chamada válida ao auto-completar " +
@@ -105,7 +106,7 @@ public class AlbumTest {
 
     @Test
     public void testarGetItemColado() {
-        popularAlbum(new int[]{1, 2, 3});
+        popularAlbum(new int[] {1, 2, 3});
         Figurinha figurinha = (Figurinha) albumFigurinhas.getItemColado(2);
 
         assertNotNull(figurinha);
@@ -117,10 +118,11 @@ public class AlbumTest {
 
     @Test
     public void testarRejeicaoPacotinhosDeTamanhoErrado() {
-        popularAlbum(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 8, 8, 8});
+        popularAlbum(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 8, 8, 8});
 
         assertEquals("Pacotes de tamanho distinto do informado na construção " +
                         "do álbum devem ser rejeitados",
                 0, albumFigurinhas.getQuantItensColados());
     }
+
 }

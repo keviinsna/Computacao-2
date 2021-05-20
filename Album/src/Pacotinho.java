@@ -1,6 +1,3 @@
-import jdk.swing.interop.SwingInterOpUtils;
-
-import java.util.List;
 import java.util.Random;
 
 public class Pacotinho{
@@ -14,7 +11,7 @@ public class Pacotinho{
 
         for(int i = 0; i < posicoesDesejadas.length; i++){
 //            pacotinho[i] = new Figurinha(posicoesDesejadas[i], null);
-            pacotinho[i] = repo.getItem(posicoesDesejadas[i] - 1);
+            pacotinho[i] = repo.getItem(posicoesDesejadas[i]);
         }
     }
 
@@ -33,7 +30,7 @@ public class Pacotinho{
         int totalFigurinhas = repo.getTotalItens();
 
         for(int i = 0; i < quantFigurinhas; i++){
-            pacotinho[i] = repo.getItem(random.nextInt(totalFigurinhas));
+            pacotinho[i] = repo.getItem(random.nextInt(totalFigurinhas) + 1);
         }
     }
 

@@ -16,10 +16,10 @@ public class Figurinha implements Colecionavel{
     }
 
     public Image getImagem() {
-        return this.imagem;
+        return imagem;
     }
 
     public int getPosicao() {
-        return this.posicao;
+        return posicao;
     }
 }
