@@ -106,14 +106,14 @@ public class Album <T extends Colecionavel> {
                 T fig = this.itensColados.get(i);
                 if (fig == null){
                     posicoesDesejadas[index++] = i;
-                    if(index == 3){
+                    if(index == this.quantItensPorPacotinho){
                         index = 0;
                         receberNovoPacotinho(new Pacotinho<T>(this.repositorio, posicoesDesejadas));
                         posicoesDesejadas[0] = posicoesDesejadas[1] = posicoesDesejadas[2] = 1;
                     }
                 }
             }
-            if(posicoesDesejadas[0] != 1)
+            if(index != 0)
                 receberNovoPacotinho(new Pacotinho<T>(this.repositorio, posicoesDesejadas));
         }
     }
