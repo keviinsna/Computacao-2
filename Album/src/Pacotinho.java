@@ -1,39 +1,40 @@
 import java.util.Random;
 
-public class Pacotinho{
+public class Pacotinho < T extends Colecionavel>{
 
-    private final Repositorio repo;
-    private final Colecionavel[] pacotinho;
+    private final Repositorio<T> repo;
+    private final T[] pacotinho;
 
-    public Pacotinho(Repositorio repo, int[] posicoesDesejadas) {
+    public Pacotinho(Repositorio<T> repo, int[] posicoesDesejadas) {
         this.repo = repo;
-        this.pacotinho = new Colecionavel[posicoesDesejadas.length];
+        this.pacotinho = (T[]) new Colecionavel[posicoesDesejadas.length];
 
         for(int i = 0; i < posicoesDesejadas.length; i++){
-            pacotinho[i] = repo.getItem(posicoesDesejadas[i]);
+            pacotinho[i] = (T) repo.getItem(posicoesDesejadas[i]);
         }
     }
 
     /**
-     * Produz um pacotinho com quantFigurinhas sorteadas aleatoriamente
+     * Produz um pacotinho com quantItens sorteadas aleatoriamente
      * dentre aqueles presentes no repositório informado.
      *
      * @param repo o repositório desejado
-     * @param quantFigurinhas a quantidade de figurinhas a constar no pacotinho
+     * @param quantItens a quantidade de figurinhas a constar no pacotinho
      */
-    public Pacotinho(Repositorio repo, int quantFigurinhas) {
+
+    public Pacotinho(Repositorio<T> repo, int quantItens) {
         this.repo = repo;
-        this.pacotinho = new Colecionavel[quantFigurinhas];
+        this.pacotinho = (T[]) new Colecionavel[quantItens];
 
         Random random = new Random();
         int totalItens = repo.getTotalItens();
 
-        for(int i = 0; i < quantFigurinhas; i++){
+        for(int i = 0; i < quantItens; i++){
             pacotinho[i] = repo.getItem(random.nextInt(totalItens) + 1);
         }
     }
 
-    public Colecionavel[] getFigurinhas() {
+    public T[] getItens() {
         return this.pacotinho;
     }
 }

@@ -1,16 +1,17 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Repositorio{
+public class Repositorio <T extends Colecionavel>{
 
     private static final String PREFIXO_URL_IMAGENS = "http://www.nossoalbum.com.br/imagens/";
 
-    private final List<Colecionavel> todosItens;
+    private final List<T> todosItens;
 
-    public Repositorio(String sufixoUrlImagens, int quantFigurinhas) {
-        todosItens = new ArrayList<>(quantFigurinhas);
-        for (int i = 1; i <= quantFigurinhas; i++) {
-            Colecionavel fig = new Figurinha(i, PREFIXO_URL_IMAGENS + sufixoUrlImagens);
+    @SuppressWarnings("unchecked")
+    public Repositorio(String sufixoUrlImagens, int quantItens, String tipo) {
+        todosItens = new ArrayList<>(quantItens);
+        for (int i = 1; i <= quantItens; i++) {
+            T fig = (T) ColecionavelFactory.create(tipo, i, PREFIXO_URL_IMAGENS + sufixoUrlImagens);
             todosItens.add(fig);
         }
     }
@@ -19,8 +20,8 @@ public class Repositorio{
         return this.todosItens.size();
     }
 
-    public Colecionavel getItem(int posicao){
-        for(Colecionavel itemColecionvel: this.todosItens){
+    public T getItem(int posicao){
+        for(T itemColecionvel: this.todosItens){
             if(itemColecionvel.getPosicao() == posicao)
                 return itemColecionvel;
         }

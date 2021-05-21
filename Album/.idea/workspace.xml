@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="794694fc-e65c-48de-a1cb-135da3f9d11e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Album.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AlbumTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AlbumTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pacotinho.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pacotinho.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repositorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repositorio.java" afterDir="false" />
     </list>
@@ -37,7 +39,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Ellen/Album" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -74,9 +76,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AlbumTest.testarSeloEAlbum" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Album" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AlbumTest" />
+      <option name="METHOD_NAME" value="testarSeloEAlbum" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.AlbumTest" />
+        <item itemvalue="JUnit.AlbumTest.testarSeloEAlbum" />
         <item itemvalue="JUnit.AlbumTest.testarAutoCompletar" />
         <item itemvalue="JUnit.AlbumTest.testarPossuiFigurinhaParaFigurinhasExistentes" />
       </list>
@@ -103,5 +116,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

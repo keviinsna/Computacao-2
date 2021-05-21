@@ -5,20 +5,26 @@ import static org.junit.Assert.*;
 
 public class AlbumTest {
 
-    private Album albumFigurinhas;
-    private Repositorio repositorioFigurinhas;
+    private Album<Figurinha> albumFigurinhas;
+    private Repositorio<Figurinha> repositorioFigurinhas;
+
+    private Album<Selo> albumSelos;
+    private Repositorio<Selo> repositorioSelos;
 
     private static final int TAMANHO_DO_ALBUM = 200;
     private static final int ITENS_POR_PACOTE = 3;
 
     @Before  // roda antes de cada teste
     public void setUp() {
-        this.repositorioFigurinhas = new Repositorio("album_copa2014", TAMANHO_DO_ALBUM);
-        this.albumFigurinhas = new Album(repositorioFigurinhas, ITENS_POR_PACOTE);
+        this.repositorioFigurinhas = new Repositorio<>("album_copa2014", TAMANHO_DO_ALBUM, "figurinha");
+        this.albumFigurinhas = new Album<>(repositorioFigurinhas, ITENS_POR_PACOTE);
+
+        this.repositorioSelos = new Repositorio<>("album_selos2010", TAMANHO_DO_ALBUM, "selo");
+        this.albumSelos = new Album<>(repositorioSelos, ITENS_POR_PACOTE);
     }
 
     private void popularAlbum(int[] posicoesDesejadas) {
-        Pacotinho pacote = new Pacotinho(this.repositorioFigurinhas, posicoesDesejadas);
+        Pacotinho<Figurinha> pacote = new Pacotinho<>(this.repositorioFigurinhas, posicoesDesejadas);
         this.albumFigurinhas.receberNovoPacotinho(pacote);
     }
 
@@ -89,7 +95,7 @@ public class AlbumTest {
                 (int) (TAMANHO_DO_ALBUM * Album.PERCENTUAL_MINIMO_PARA_AUTO_COMPLETAR / 100f);
 
         while (albumFigurinhas.getQuantItensColados() < minimoFigurinhasColadasParaAutoCompletar) {
-            Pacotinho novoPacotinho = new Pacotinho(
+            Pacotinho<Figurinha> novoPacotinho = new Pacotinho<>(
                     this.repositorioFigurinhas, ITENS_POR_PACOTE);  // aleatório
             albumFigurinhas.receberNovoPacotinho(novoPacotinho);
         }
@@ -123,6 +129,23 @@ public class AlbumTest {
         assertEquals("Pacotes de tamanho distinto do informado na construção " +
                         "do álbum devem ser rejeitados",
                 0, albumFigurinhas.getQuantItensColados());
+    }
+
+    @Test
+    public void testarSeloEAlbum(){
+        int[] posicoesDesejadas = new int[]{1, 4, 5, 6};
+
+        Pacotinho<Selo> pacotinhoSelo = new Pacotinho<>(repositorioSelos, posicoesDesejadas);
+        Pacotinho<Figurinha> pacotinhoFigurinha = new Pacotinho<>(repositorioFigurinhas, posicoesDesejadas);
+
+        albumSelos.receberNovoPacotinho(pacotinhoSelo);
+        albumFigurinhas.receberNovoPacotinho(pacotinhoFigurinha);
+
+        Selo selo = albumSelos.getItemColado(6);
+        assertEquals(selo, albumSelos.getItemColado(6));
+
+        Figurinha figurinha = albumFigurinhas.getItemColado(5);
+        assertEquals(figurinha, albumFigurinhas.getItemColado(5));
     }
 
 }
