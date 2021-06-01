@@ -9,18 +9,21 @@ import java.util.*;
  *  Os tuítes podem conter, além da mensagem de texto, um anexo qualquer.
  *  Há um método para retornar, a qualquer momento, qual a hashtag mais usada em toda a história do sistema.
  */
-public class TuiterLite {
+public class TuiterLite <T>{
 
-    private Set<Usuario> conjuntoUsuarios;
-    private Set<String> hastags;
+    private Map<String, Usuario> usuarioByEmail;
     private Map<String, Integer> quantByHastag;
+    private String hashtagMaisComum;
+    private int quantHashtagMaisComum;
 
     public static int TAMANHO_MAXIMO_TUITES = 120;
 
     public TuiterLite(){
-        conjuntoUsuarios = new HashSet<>();
-        hastags = new HashSet<>();
+        usuarioByEmail = new HashMap<>();
         quantByHastag = new HashMap<>();
+
+        hashtagMaisComum = null;
+        quantHashtagMaisComum = 0;
     }
 
     /**
@@ -29,9 +32,15 @@ public class TuiterLite {
      * @param email O e-mail do usuário (precisa ser único no sistema).
      * @return O Usuario criado.
      */
-    public Usuario cadastrarUsuario(String nome, String email) {  // throws UsuarioJaExisteException {
-        Usuario usuario = new Usuario(nome, email);
-        conjuntoUsuarios.add(usuario);
+    public Usuario cadastrarUsuario(String nome, String email) throws UsuarioJaExisteException {
+        Usuario usuario = this.usuarioByEmail.get(email);
+
+        if(usuario != null){
+            throw new UsuarioJaExisteException();
+        }
+
+        usuario = new Usuario(nome, email);
+        this.usuarioByEmail.put(email, usuario);
         return usuario;
     }
 
@@ -43,10 +52,48 @@ public class TuiterLite {
      *
      * PS.: Se o texto exceder o limite pré-definido, ou o usuário não estiver cadastrado, return null
      */
-    public Tuite tuitarAlgo(Usuario usuario, String texto) {
+    public Tuite<T> tuitarAlgo(Usuario usuario, String texto) throws TamanhoMaximoExcedidoException,
+                                                                  UsuarioDesconhecidoException{
 
-        if(!conjuntoUsuarios.contains(usuario) || texto.length() > TAMANHO_MAXIMO_TUITES)
+        if( texto == null || texto.length() == 0 || usuario == null){
             return null;
+        }
+
+        if(texto.length() > TAMANHO_MAXIMO_TUITES){
+            throw new TamanhoMaximoExcedidoException();
+        }
+
+        if(!this.usuarioByEmail.containsKey(usuario.getEmail())){
+            throw new UsuarioDesconhecidoException();
+        }
+
+        Set<String> hashtags = obterHashtags(texto);
+
+        for (String hashtag : hashtags){
+            int quantidadeHashtag = this.quantByHastag.getOrDefault(hashtag, 0);
+            int novaQuantidadeHashtag = quantidadeHashtag + 1;
+            this.quantByHastag.put(hashtag, novaQuantidadeHashtag);
+
+            if(this.quantHashtagMaisComum < novaQuantidadeHashtag){
+                this.quantHashtagMaisComum = novaQuantidadeHashtag;
+                this.hashtagMaisComum = hashtag;
+            }
+        }
+        return new Tuite<T>(usuario, texto, hashtags);
+    }
+
+    /**
+     * Retorna a hashtag mais comum dentre todas as que já apareceram.
+     * A cada tuíte criado, hashtags devem ser detectadas automaticamente para que este método possa funcionar.
+     * @return A hashtag mais comum, ou null se nunca uma hashtag houver sido tuitada.
+     */
+    public String getHashtagMaisComum() {
+        return this.hashtagMaisComum;
+    }
+
+    public Set<String> obterHashtags(String texto){
+
+        Set<String> hashtags = null;
 
         String[] palavrasDaFrase = texto.split("([^(a-z|A-Z|0-9|ã-ü|#)])+");
 
@@ -58,36 +105,15 @@ public class TuiterLite {
                 String[] tags = palavra.split("#"); // Caso a palavra tenha várias #, mas não uma do lado da outra
                 for(String tag: tags){
                     if (tag.length() > 0){
-                        this.hastags.add("#" + tag);
-                        int quant = this.quantByHastag.getOrDefault(("#" + tag), 0);
-                        this.quantByHastag.put(("#" + tag), quant + 1);
+                        if(hashtags == null){
+                            hashtags = new HashSet<>();
+                        }
+                        hashtags.add("#" + tag);
                     }
                 }
             }
         }
-
-        return new Tuite(usuario, texto, this.hastags);
-    }
-
-    /**
-     * Retorna a hashtag mais comum dentre todas as que já apareceram.
-     * A cada tuíte criado, hashtags devem ser detectadas automaticamente para que este método possa funcionar.
-     * @return A hashtag mais comum, ou null se nunca uma hashtag houver sido tuitada.
-     */
-    public String getHashtagMaisComum() {
-        int maior = 0;
-        String hashtagMaisComum = null;
-
-        for(String hashtag : this.quantByHastag.keySet()){
-            int quant = this.quantByHastag.get(hashtag);
-            if(quant > maior){
-                maior = quant;
-                hashtagMaisComum = hashtag;
-            }
-        }
-
-        return hashtagMaisComum;
-
+        return hashtags == null ? Collections.emptySet() : hashtags;
     }
 
     public static void main(String[] args) {
@@ -174,11 +200,4 @@ public class TuiterLite {
 
 
     }
-
-    private static boolean isAlphanumeric(char c) {
-        return Character.isAlphabetic(c) || Character.isDigit(c);
-    }
-
-
-
 }
